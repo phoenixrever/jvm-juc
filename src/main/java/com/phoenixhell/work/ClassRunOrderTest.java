@@ -1,11 +1,11 @@
-package com.phoenixhell.InterfaceMultiImpl;
+package com.phoenixhell.work;
 
-public class Test {
+public class ClassRunOrderTest {
     {
         System.out.println("test");
     }
 
-    public Test(){
+    public ClassRunOrderTest(){
         System.out.println("Test constructor");
     }
     static {
@@ -13,6 +13,6 @@ public class Test {
     }
     public static void main(String[] args) {
         System.out.println("----------main------------");
-        Test test = new Test();
+        ClassRunOrderTest test = new ClassRunOrderTest();
     }
 }

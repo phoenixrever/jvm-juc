@@ -3,8 +3,9 @@ package com.phoenixhell.jmm;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class CompareAndSetSingleton {
-    private static AtomicReference<Thread> atomicReference = new AtomicReference<>();
     private static CompareAndSetSingleton instance = null;
+    //原子引用线程
+    private static AtomicReference<Thread> atomicReference = new AtomicReference<>();
 
     private CompareAndSetSingleton() {
         System.out.println(Thread.currentThread().getName() + "----constructor");
@@ -34,7 +35,7 @@ public class CompareAndSetSingleton {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             new Thread(CompareAndSetSingleton::getInstance, String.valueOf(i)).start();
         }
     }

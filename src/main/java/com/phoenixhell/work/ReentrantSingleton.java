@@ -1,4 +1,4 @@
-package com.phoenixhell.InterfaceMultiImpl;
+package com.phoenixhell.work;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -12,8 +12,8 @@ public class ReentrantSingleton {
 
     public static ReentrantSingleton getInstance(){
         if(instance==null){
+            lock.lock();
             try {
-                lock.lock();
                 if(instance==null){
                     instance=new ReentrantSingleton();
                 }
