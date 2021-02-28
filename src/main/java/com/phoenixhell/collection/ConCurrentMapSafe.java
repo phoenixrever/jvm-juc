@@ -1,4 +1,4 @@
-package com.phoenixhell.container;
+package com.phoenixhell.collection;
 
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;

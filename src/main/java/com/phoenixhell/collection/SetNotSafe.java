@@ -1,8 +1,5 @@
-package com.phoenixhell.container;
+package com.phoenixhell.collection;
 
-import javax.xml.ws.soap.MTOM;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArraySet;
