@@ -1,6 +1,6 @@
 package com.phoenixhell.enumdemo;
 
-        import lombok.Getter;
+import lombok.Getter;
 
 @Getter
 public enum SixKingdom {
