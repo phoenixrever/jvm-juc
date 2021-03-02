@@ -21,8 +21,8 @@ public class CustomThreadPool {
 
         ExecutorService threadPoolExecutor = new ThreadPoolExecutor(
                 2,
-                processors,
-                2,
+                5,// 最大线程数通常是逻辑处理器个数加1或者2  即12+1
+                2L,
                 TimeUnit.SECONDS,
                 new LinkedBlockingQueue<Runnable>(3),
                 Executors.defaultThreadFactory(),
@@ -31,17 +31,19 @@ public class CustomThreadPool {
                 //CallerRunsPolicy：“调用者运行”一种调节机制，该策略既不会抛弃任务，也不会抛出异常，
                 // 而是将某些任务回退到调用者(main)，从而降低新任务的流量。
                 //一句话 回退 哪个线程调用这个任务的找谁（main）执行任务
-                new ThreadPoolExecutor.CallerRunsPolicy());
+//                new ThreadPoolExecutor.CallerRunsPolicy());
                 //DiscardPolicy：该策略默默地丢弃无法处理的任务
                 // 不予任何处理也不抛出异常。 如果允许任务丢失，这是最好的一种策略。
-//                new ThreadPoolExecutor.DiscardPolicy());
+                new ThreadPoolExecutor.DiscardPolicy());
                 //DiscardOldestPolicy：抛弃队列中等待最久的任务，
                 // 然后把当前任务加人队列中 尝试再次提交当前任务。
 //                new ThreadPoolExecutor.DiscardOldestPolicy());
         try {
-            for (int i = 0; i < 16; i++) {
+            for (int i = 1; i <=9; i++) {
                 threadPoolExecutor.execute(()->{
                     System.out.println(Thread.currentThread().getName()+"-----执行任务");
+                    try {TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
+
                 });
             }
         } catch (Exception e) {
